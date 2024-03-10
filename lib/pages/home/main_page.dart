@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:shamo/pages/home/chat_page.dart';
+import 'package:shamo/pages/home/home_page.dart';
+import 'package:shamo/pages/home/profile_page.dart';
+import 'package:shamo/pages/home/wishlist_page.dart';
 import 'package:shamo/theme.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +34,7 @@ class MainPage extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         child: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          notchMargin: 20,
+          notchMargin: 12,
           clipBehavior: Clip.antiAlias,
           color: bgColor4,
           height: 80,
@@ -42,18 +53,24 @@ class MainPage extends StatelessWidget {
                       icon: Image.asset(
                         'assets/icon_home.png',
                         width: 20,
+                        color: currentIndex == 0 ? primaryColor : subtitleColor,
                       ),
                       onPressed: () {
-                        // Handle home button action
+                        setState(() {
+                          currentIndex = 0;
+                        });
                       },
                     ),
                     IconButton(
                       icon: Image.asset(
                         'assets/icon_chat.png',
                         width: 20,
+                        color: currentIndex == 1 ? primaryColor : subtitleColor,
                       ),
                       onPressed: () {
-                        // Handle chat button action
+                        setState(() {
+                          currentIndex = 1;
+                        });
                       },
                     ),
                   ],
@@ -68,20 +85,26 @@ class MainPage extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Image.asset(
-                        'assets/icon_home.png',
+                        'assets/icon_favorite.png',
                         width: 20,
+                        color: currentIndex == 2 ? primaryColor : subtitleColor,
                       ),
                       onPressed: () {
-                        // Handle home button action
+                        setState(() {
+                          currentIndex = 2;
+                        });
                       },
                     ),
                     IconButton(
                       icon: Image.asset(
-                        'assets/icon_chat.png',
+                        'assets/icon_profile.png',
                         width: 20,
+                        color: currentIndex == 3 ? primaryColor : subtitleColor,
                       ),
                       onPressed: () {
-                        // Handle chat button action
+                        setState(() {
+                          currentIndex = 3;
+                        });
                       },
                     ),
                   ],
@@ -93,14 +116,26 @@ class MainPage extends StatelessWidget {
       );
     }
 
+    Widget body() {
+      switch (currentIndex) {
+        case 0:
+          return const HomePage();
+        case 1:
+          return const ChatPage();
+        case 2:
+          return const WishlistPage();
+        case 3:
+          return const ProfilePage();
+        default:
+          return const HomePage();
+      }
+    }
+
     return Scaffold(
-      backgroundColor: bgColor1,
-      floatingActionButton: cartButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: customButtonNav(),
-      body: Center(
-        child: Text('Home Page', style: primaryTextStyle),
-      ),
-    );
+        backgroundColor: bgColor1,
+        floatingActionButton: cartButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: customButtonNav(),
+        body: body());
   }
 }

@@ -14,6 +14,10 @@ Color bgColor4 = const Color(0xff252836);
 Color primaryTextColor = const Color(0xffE1E1E1);
 Color secondaryTextColor = const Color(0xff999999);
 Color subtitleColor = const Color(0xff504F5E);
+Color transparentColor = Colors.transparent;
+Color popularProductsCardColor = const Color(0xffECEDEF);
+Color blackColor = const Color(0xff2E2E2E);
+Color whiteColor = const Color(0xffFFFFFF);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryTextColor);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
@@ -22,6 +26,7 @@ TextStyle subtitleTextStyle = GoogleFonts.poppins(color: subtitleColor);
 TextStyle purpleTextStyle = GoogleFonts.poppins(color: primaryColor);
 TextStyle greyTextStyle = GoogleFonts.poppins(color: secondaryTextColor);
 TextStyle alertTextStyle = GoogleFonts.poppins(color: alertColor);
+TextStyle blackColorTextStyle = GoogleFonts.poppins(color: blackColor);
 
 FontWeight light = FontWeight.w700;
 FontWeight regular = FontWeight.w400;
