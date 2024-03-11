@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/product_card.dart';
+import 'package:shamo/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -182,13 +183,29 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget newArrivals() {
+      return Container(
+        margin: const EdgeInsets.only(top: 14),
+        child: const Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
         header(),
         categories(),
         populaProductsTitle(),
         popularProducts(),
-        newArrivalsTitle()
+        newArrivalsTitle(),
+        newArrivals()
       ],
     );
   }
